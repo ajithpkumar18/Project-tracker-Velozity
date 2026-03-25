@@ -47,7 +47,9 @@ export default function FilterBar() {
 	return (
 		<div className='flex gap-4 mb-4'>
 			<div>
-				<div className='text-sm font-bold'>Status</div>
+				<div className='text-md font-bold text-green-400 py-2'>
+					Status
+				</div>
 				{statuses.map((s) => (
 					<button
 						type='button'
@@ -63,7 +65,9 @@ export default function FilterBar() {
 			</div>
 
 			<div>
-				<div className='text-sm font-bold'>Priority</div>
+				<div className='text-md font-bold text-green-400 py-2'>
+					Priority
+				</div>
 				{priorities.map((p) => (
 					<button
 						type='button'

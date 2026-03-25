@@ -22,6 +22,7 @@ export default function GanttView() {
 
 	return (
 		<div className='flex border h-[90vh]'>
+			{/* LEFT SIDE */}
 			<div className='w-48 border-r overflow-y-auto'>
 				<div className='h-[30px] border-b'></div>
 
@@ -79,7 +80,7 @@ export default function GanttView() {
 									colorMap[task.priority]
 								}`}
 								style={{
-									top: i * 30 + 5, // aligned with rows
+									top: i * 30 + 5,
 									left,
 									width,
 									height: 20,
