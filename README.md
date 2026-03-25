@@ -111,8 +111,9 @@ npm run dev
 Includes generator for 500+ randomized tasks.
 
 ## 🔍 Lighthouse results
+
 - Available at public/images/lighthousetest.png
-![Lighthouse test result](assets/lighthousetest.png)
+  ![Lighthouse test result](public/images/lighthousetest.png)
 
 ## 🧩 Hardest Problem
 
