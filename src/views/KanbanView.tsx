@@ -67,7 +67,7 @@ export default function KanbanV() {
 	});
 
 	return (
-		<div className='grid grid-cols-4 gap-4 h-full min-h-0 overflow-hidden'>
+		<div className='grid xs:grid-cols-1 sm:grid-cols-4 gap-4 h-full min-h-0 no-scrollbar overflow-y-auto  md:overflow-hidden'>
 			{columns.map((col) => {
 				const colTasks = filteredTasks.filter(
 					(t) => t.status === col.key,
@@ -82,7 +82,7 @@ export default function KanbanV() {
 						key={col.key}
 						ref={(el) => registerColumn(col.key, el)}
 						className={`
-  flex flex-col h-full min-h-0 rounded-xl border-2 transition-colors duration-150
+  flex flex-col h-full min-h-48 rounded-xl border-2 transition-colors duration-150
   ${isOver ? `${style.bg} ${style.border}` : "bg-gray-50 border-transparent"}
 `}
 					>
@@ -101,7 +101,7 @@ export default function KanbanV() {
 							</span>
 						</div>
 
-						{/* Cards area — independently scrollable */}
+						{/* Cards area */}
 						<div className='flex-1 overflow-y-auto p-2 min-h-0'>
 							{colTasks.length === 0 && !isOver && (
 								<div className='flex flex-col items-center justify-center h-20 text-gray-300'>

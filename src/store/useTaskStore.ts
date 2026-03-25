@@ -7,11 +7,17 @@ interface Filters {
 	priority: string[];
 }
 
+interface ActiveUsers {
+	[userId: string]: string;
+}
+
 interface TaskState {
 	tasks: Task[];
 	filters: Filters;
+	activeUsers: ActiveUsers;
 	setFilters: (filters: Partial<Filters>) => void;
 	updateTaskStatus: (id: string, status: Status) => void;
+	setActiveUsers: (users: ActiveUsers) => void;
 }
 
 export const useTaskStore = create<TaskState>((set) => ({
@@ -20,6 +26,7 @@ export const useTaskStore = create<TaskState>((set) => ({
 		status: [],
 		priority: [],
 	},
+	activeUsers: {},
 
 	setFilters: (newFilters) =>
 		set((state) => ({
@@ -29,6 +36,7 @@ export const useTaskStore = create<TaskState>((set) => ({
 	updateTaskStatus: (id, status) =>
 		set((state) => ({
 			tasks: state.tasks.map((t) => (t.id === id ? { ...t, status } : t)),
-			draggingTaskId: null,
 		})),
+
+	setActiveUsers: (users) => set({ activeUsers: users }),
 }));

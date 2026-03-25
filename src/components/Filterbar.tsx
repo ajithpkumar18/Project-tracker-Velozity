@@ -45,41 +45,55 @@ export default function FilterBar() {
 	}, []);
 
 	return (
-		<div className='flex gap-4 mb-4'>
-			<div>
-				<div className='text-md font-bold text-green-400 py-2'>
+		<div className='flex flex-col md:flex-row gap-4 mb-4'>
+			<div className='flex-1'>
+				<div className='text-sm font-semibold text-green-500 mb-2'>
 					Status
 				</div>
-				{statuses.map((s) => (
-					<button
-						type='button'
-						key={s}
-						onClick={() => toggle("status", s)}
-						className={`mr-2 px-2 py-1 border ${
-							filters.status.includes(s) ? "bg-blue-200" : ""
-						}`}
-					>
-						{s}
-					</button>
-				))}
+
+				<div className='flex flex-wrap gap-2'>
+					{statuses.map((s) => (
+						<button
+							type='button'
+							key={s}
+							onClick={() => toggle("status", s)}
+							className={`px-3 py-1 rounded-md border text-sm transition
+              ${
+					filters.status.includes(s)
+						? "bg-blue-200 border-blue-300"
+						: "bg-white border-gray-200"
+				}
+            `}
+						>
+							{s}
+						</button>
+					))}
+				</div>
 			</div>
 
-			<div>
-				<div className='text-md font-bold text-green-400 py-2'>
+			<div className='flex-1'>
+				<div className='text-sm font-semibold text-green-500 mb-2'>
 					Priority
 				</div>
-				{priorities.map((p) => (
-					<button
-						type='button'
-						key={p}
-						onClick={() => toggle("priority", p)}
-						className={`mr-2 px-2 py-1 border ${
-							filters.priority.includes(p) ? "bg-green-200" : ""
-						}`}
-					>
-						{p}
-					</button>
-				))}
+
+				<div className='flex flex-wrap gap-2'>
+					{priorities.map((p) => (
+						<button
+							type='button'
+							key={p}
+							onClick={() => toggle("priority", p)}
+							className={`px-3 py-1 rounded-md border text-sm transition
+              ${
+					filters.priority.includes(p)
+						? "bg-green-200 border-green-300"
+						: "bg-white border-gray-200"
+				}
+            `}
+						>
+							{p}
+						</button>
+					))}
+				</div>
 			</div>
 		</div>
 	);

@@ -1,4 +1,6 @@
 import type { Task, Priority } from "../types/task";
+import { useTaskStore } from "../store/useTaskStore";
+import { users, getUserColor } from "../utils/utils";
 
 const priorityStyles: Record<Priority, string> = {
 	critical: "bg-red-100 text-red-700 border border-red-200",
@@ -56,6 +58,14 @@ export default function TaskC({
 }: Props) {
 	const due = formatDueDate(task.dueDate);
 
+	const activeUsers = useTaskStore((s) => s.activeUsers);
+
+	// mapping the user to show in the card
+	const usersHere = Object.entries(activeUsers)
+		.filter(([_, taskId]) => String(taskId) === String(task.id))
+		.map(([userId]) => userId);
+
+	console.log(activeUsers);
 	if (isDragging) {
 		return (
 			<div
@@ -74,6 +84,30 @@ export default function TaskC({
 		>
 			<div className='font-medium text-sm text-gray-800 leading-snug mb-2'>
 				{task.title}
+			</div>
+
+			<div className='flex items-center mt-2'>
+				<div className='flex -space-x-2'>
+					{usersHere.slice(0, 2).map((id) => {
+						const user = users.find((u) => u.id === id);
+						if (!user) return null;
+
+						return (
+							<div
+								key={id}
+								className={`w-6 h-6 text-xs text-white flex items-center justify-center rounded-full border border-white ${getUserColor(id)}`}
+							>
+								{user.name}
+							</div>
+						);
+					})}
+
+					{usersHere.length > 2 && (
+						<div className='w-6 h-6 text-xs bg-gray-300 rounded-full flex items-center justify-center border border-white'>
+							+{usersHere.length - 2}
+						</div>
+					)}
+				</div>
 			</div>
 
 			<span

@@ -53,7 +53,7 @@ export default function GanttView() {
 					className='relative'
 					style={{ width: daysInMonth * DAY_WIDTH }}
 				>
-					{/* Today line */}
+					{/* Today */}
 					<div
 						className='absolute top-0 bottom-0 w-[2px] bg-red-500'
 						style={{ left: (today.getDate() - 1) * DAY_WIDTH }}
