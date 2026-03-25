@@ -112,7 +112,7 @@ Includes generator for 500+ randomized tasks.
 
 ## 🔍 Lighthouse results
 
-(/images/lighthousetest1.png)
+[Lighthouse test result](/images/lighthousetest1.png)
 
 ## 🧩 Hardest Problem
 
